@@ -24,27 +24,15 @@
                     aria-labelledby="topbar-languagedrop">
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('assets/images/flags/germany.jpg') }}" alt="user-image" class="mr-1"
-                            height="12"> <span class="align-middle">German</span>
+                    <a href="{{ route('changeLang', ['locale' => 'en']) }}" class="dropdown-item notify-item">
+                        <img src="{{ asset('assets/images/flags/us.jpg') }}" alt="user-image" class="mr-1" height="12">
+                        <span class="align-middle">English</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('assets/images/flags/italy.jpg') }}" alt="user-image" class="mr-1"
-                            height="12"> <span class="align-middle">Italian</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('assets/images/flags/spain.jpg') }}" alt="user-image" class="mr-1"
-                            height="12"> <span class="align-middle">Spanish</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('assets/images/flags/russia.jpg') }}" alt="user-image" class="mr-1"
-                            height="12"> <span class="align-middle">Russian</span>
+                    <a href="{{ route('changeLang', ['locale' => 'es']) }}" class="dropdown-item notify-item">
+                        <img src="{{ asset('assets/images/flags/spain.jpg') }}" alt="user-image" class="mr-1" height="12">
+                        <span class="align-middle">Spanish</span>
                     </a>
 
                 </div>

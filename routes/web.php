@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Config\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+// Usando el método middleware() para aplicar el middleware 'web'
+Route::middleware('web')->get('lang/{locale}', [LanguageController::class, 'changeLanguage'])->name('changeLang');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

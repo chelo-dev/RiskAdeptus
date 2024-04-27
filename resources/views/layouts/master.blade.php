@@ -76,7 +76,7 @@
                     
                     <div class="row">
                         <div class="card">
-                            @yield('contenido')
+                            @yield('container')
                         </div>
                     </div>
 
