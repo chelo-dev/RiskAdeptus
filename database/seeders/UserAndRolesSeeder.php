@@ -6,6 +6,7 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 use App\Models\User;
 
 class UserAndRolesSeeder extends Seeder
@@ -22,9 +23,11 @@ class UserAndRolesSeeder extends Seeder
 
         // Crear permisos para un sistema administrativo
         $permissions = [
-            'manage users',
-            'view reports',
-            'manage settings'
+            'listUsers',
+            'createUser',
+            'editUser',
+            'detailUser',
+            'deleteUser',
         ];
 
         foreach ($permissions as $permission) {
@@ -35,11 +38,9 @@ class UserAndRolesSeeder extends Seeder
         $adminRole = Role::create(['name' => 'Administrador']);
         $adminRole->givePermissionTo(Permission::all());
 
-        $supportRole = Role::create(['name' => 'Soporte']);
-        $supportRole->givePermissionTo(['view reports']);
-
         // Crear un usuario de ejemplo
         $user = User::create([
+            'uuid' => Str::uuid(),
             'name' => 'Kharma Solutions - Admin',
             'email' => 'admin@kharma-s.com',
             'password' => Hash::make('123456'),

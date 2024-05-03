@@ -16,7 +16,7 @@
                             <i class="uil-apps mr-1"></i>Gestion <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-apps">
-                            <a href="apps-calendar.html" class="dropdown-item">Usuarios</a>
+                            <a href="{{ route('listUser') }}" class="dropdown-item">Usuarios</a>
                             <a href="apps-chat.html" class="dropdown-item">Roles</a>
                             <a href="apps-chat.html" class="dropdown-item">Persmisos</a>
                             <div class="dropdown">

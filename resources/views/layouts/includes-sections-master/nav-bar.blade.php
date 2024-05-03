@@ -2,12 +2,12 @@
     <div class="container-fluid">
 
         <!-- LOGO -->
-        <a href="" class="topnav-logo">
+        <a href="{{ route('dashboard') }}" class="topnav-logo">
             <span class="topnav-logo-lg">
-                <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="16">
+                <img src="{{ asset('logo-general.svg') }}" alt="" height="36">
             </span>
             <span class="topnav-logo-sm">
-                <img src="{{ asset('assets/images/logo_sm_dark.png') }}" alt="" height="16">
+                <img src="{{ asset('logo-general.svg') }}" alt="" height="36">
             </span>
         </a>
 
@@ -99,7 +99,7 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{ route('getAccount', Auth::user()->uuid) }}" class="dropdown-item notify-item">
                         <i class="mdi mdi-account-circle mr-1"></i>
                         <span>My Account</span>
                     </a>
@@ -108,18 +108,6 @@
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="mdi mdi-account-edit mr-1"></i>
                         <span>Settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-lifebuoy mr-1"></i>
-                        <span>Support</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-lock-outline mr-1"></i>
-                        <span>Lock Screen</span>
                     </a>
 
                     <!-- item-->

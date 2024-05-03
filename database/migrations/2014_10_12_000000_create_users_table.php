@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique()->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('department')->nullable();
@@ -29,6 +30,13 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
     }
+
+    /**
+     * Nota:
+     * Campo: is_active
+     * 1 = activvo
+     * 0 = inactivo
+    */
 
     /**
      * Reverse the migrations.
