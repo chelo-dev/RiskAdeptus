@@ -28,6 +28,10 @@
     <link href="{{ asset('assets/css/app-modern-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" id="custom" />
     <link href="{{ asset('css/loader.css') }}" rel="stylesheet" type="text/css" id="loader" />
+
+    <!-- VueJs -->
+    {{-- <link href="{{ mix('/css/app.css') }}" rel="stylesheet"> --}}
+
     @yield('css')
 
 </head>
@@ -100,6 +104,9 @@
     <!-- demo app -->
     {{-- <script src="{{ asset('assets/js/pages/demo.dashboard.js') }}"></script> --}}
     <!-- end demo js-->
+
+    <!-- VueJs -->
+    <script src="{{ mix('/js/app.js') }}"></script>
 
     @yield('js')
 </body>

@@ -75,34 +75,35 @@ class UserController extends Controller
     |----------------------------------------------------------------------------------------------------
     */
 
+    public function listaUsuarios()
+    {
+        $users = User::with('roles')->select('users.*')->orderByDesc('id')->get();
+        
+        $users->transform(function ($user) {
+            return [
+                'uuid' => $user->uuid,
+                'name' => $user->name,
+                'email' => $user->email,
+                'department' => $user->department,
+                'position' => $user->position,
+                'is_active' => $user->is_active,
+                // 'last_login' => $user->last_login,
+                'phone' => $user->phone,
+                // 'notes' => $user->notes,
+                'role' => $user->roles->first()->name ?? 'N/A',
+                'created_at' => $user->created_at,
+            ];
+        });
+
+        return $this->shared->sendResponse($users, 'Lista de usuarios.');
+    }
+
     public function listUser(User $users)
     {
         # Politica para saber si el usuario cuenta con los permisos deacuerdo a su rol asignado
         // Gate::authorize('listUser');
 
         try {
-            $users = User::with('roles')
-                ->select('users.*')
-                ->orderByDesc('id');
-
-                if (request()->ajax()) {
-                    return datatables()->of($users)
-                        ->addColumn('options', function ($user) {
-                            return view('pages.system.users.shared.options', ['uuid' => $user->uuid]);
-                        })
-                        ->addColumn('is_active', function($user) {
-                            return $user->is_active ? '<span class="badge badge-success">Activo</span>' : '<span class="badge badge-danger">Inactivo</span>';
-                        })
-                        ->addColumn('role', function($user) {
-                            return $user->roles->first()->name ?? 'N/A';
-                        })
-                        ->addColumn('created_at', function ($user) {
-                            return date('d-m-Y H:i:s', strtotime($user->created_at));
-                        })
-                        ->rawColumns(['options', 'is_active'])
-                        ->toJson();
-                }
-
             return view('pages.system.users.list');
         } catch (Exception $error) {
             return redirect()->route('dashboard')->with('error', $error->getMessage());

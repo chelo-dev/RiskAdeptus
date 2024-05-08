@@ -24,7 +24,6 @@
             </div>
             <div class="card-body">
                 <div class="row">
-
                     <div class="col-12">
                         <div class="page-title-box">
                             <div class="page-title-right">
@@ -49,21 +48,9 @@
                     </div>
 
                     <div class="col-12">
-                        <table id="listUser" class="table dt-responsive nowrap w-100">
-                            <thead>
-                                <tr>
-                                    <th>Acciones</th>
-                                    <th>Estatus</th>
-                                    <th>Nombre Completo</th>
-                                    <th>Rol</th>
-                                    <th>Email</th>
-                                    <th>Telefono</th>
-                                    <th>Departamento</th>
-                                    <th>Area</th>
-                                    <th>Fecha de registro</th>
-                                </tr>
-                            </thead>
-                        </table>
+                        <div id="app">
+                            <users-table></users-table>
+                        </div>
                     </div>
 
                 </div>
@@ -73,40 +60,5 @@
 
     </div>
 </div>
-
-@section('js')
-    <script type="text/javascript">
-        "use strict";
-        
-        $(document).ready(function() {
-            $('#listUser').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "stateSave": true,
-                "responsive": true,
-                "order": [[1, 'DESC']],
-                "lengthMenu": [[20, 25, 50, 100, -1], [20, 25, 50, 100, 'TODO']],
-                "language": {
-                    url: "{{ asset('json/datatable-es.json') }}"
-                },
-                "ajax": "{{ route('listUser') }}",
-                "columns": [
-                    {"data": "options"},
-                    {"data": "is_active"},
-                    {"data": "name"},
-                    {"data": "role"},
-                    {"data": "email"},
-                    {"data": "phone"},
-                    {"data": "department"},
-                    {"data": "position"},
-                    {"data": "created_at"}
-                ],
-                drawCallback: function() {
-                    $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
-                }
-            });
-        });
-    </script>
-@endsection
 
 @endsection
