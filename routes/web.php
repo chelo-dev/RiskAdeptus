@@ -26,8 +26,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('lista-usuarios', [UserController::class, 'listaUsuarios'])->name('listaUsuarios');
-
 // Administracion cueneta
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::get('/cuenta/{uuid}', [UserController::class, 'getAccount'])->name('getAccount');
